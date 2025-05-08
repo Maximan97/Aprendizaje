@@ -1,0 +1,5 @@
+numero1 = int(input("Dadme un numerro: "))
+numero2 = int(input("Dadme por el otro: "))
+print(f"Este numero {numero1} es igual a {numero2}? {numero1 == numero2}")
+print(f"El numero {numero1} es major que {numero2}? {numero1 > numero2}")
+print(f"El numero {numero1} es menor que {numero2}? {numero1 < numero2}")

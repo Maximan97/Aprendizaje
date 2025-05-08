@@ -1,0 +1,5 @@
+# acá pido un numero, el int() sirve para hacerlo entero (int)
+edad = int(input("¿Cual es your edad?: "))
+altura = float(input("¿Cual es your altura in metros?: "))
+print(type(edad)) # Acá imprimo el typo (entero [int])
+print(type(altura))
