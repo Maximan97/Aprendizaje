@@ -1,0 +1,7 @@
+Nombre: Mateo Edad: 20  
+Nombre: mateo Edad: 20  
+Nombre: mateo Edad: 20  
+Nombre: mateo Edad: 20  
+Nombre: maxi Edad: 28  
+Nombre: mati Edad: 33  
+Nombre: anda Edad: 5  
