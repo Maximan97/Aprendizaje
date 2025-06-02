@@ -37,78 +37,48 @@
 #     mostrar_libros_disponibles(): lista todos los que se pueden prestar.
 #     # TIP: Podés usar listas y bucles para recorrer los libros.
 
+estanteria = ["pito","culo", "teta"]
 
-class Libro(): # puede haber una herencia / # valor: int
-    def __init__(self, nombre: str, titulo: str) -> None:
-        self._nombre =  nombre # debe tener _privado
-        self._titulo = titulo
+def agregar_libro():
+    n_libro = input("dime el nombre del libro: ")
+    estanteria.append(n_libro)
+    print(f"{n_libro} fue agregado en la biblioteca.")
+    print("Muchas gracias.")
 
-    @property
-    def nombre(self):
-        return self._nombre
-    @property
-    def titulo(self):
-        return self._titulo
-
-    @nombre.setter
-    def nombre(self, nuevo):
-        if nuevo != "":
-            self._nombre = nuevo
-    @titulo.setter
-    def titulo(self, nuevo):
-        if nuevo != "":
-            self._titulo = nuevo
-
-class Biblioteca(Libro):
-    def __init__(self, agregar_libro, prestado_libro, mostrar_libros):
-        self.agregar_libro = agregar_libro 
-        self.prestado_libro = prestado_libro
-        self.mostrar_libros = mostrar_libros
-
-
-operador = ["culo", "teta"]
-
-mostrar_libros = operador
-
-def agregar_libro(operador):
-    nombre = input("Nombre del libro? ") # X
-    titulo = input("Y su titulo es? ")
-    operador[nombre] = titulo # ~ -> operador.append(titulo)
-    print(operador)
-    print("Ya fue agregado.")
-
-def buscar_libro(operador):
-    buscar = input("Nombre del libro?")
-    if buscar in operador:
-        print(operador[buscar])
-        opsion = Input("Te lo llevas? [Y/N]")
-    elif opsion == "Y":
-        operador del buscar, titulo
-
+def buscar_libro(b_libro):
+    b_libro = input("el libro que buscamos es: ")
+    if b_libro in estanteria:
+        print(f"{b_libro} fue encontrado.")
     else:
-        print("No esta disponible.")
+        print("No esta.")
+
+def prestar_libro(libro):
+    if buscar_libro(b_libro=libro):
+        estanteria.remove(libro)
+        print("Que lo disfrutes.")
+    else:
+        print("No esta")
 
 while True:
-    print("Bienvenido a la biblioteca")
-    print("")
-    print("1. Agregar libro.")
-    print("2. Pedir libro.")
-    print("3. Mostrar todos los libros.")
-    print("0. Salir.")
-
-    opcion = input("Elige una opción: ")
-
+    print("1. Agregar libro a la biblioteca.")
+    print("2. Pedir un libro a la biblioteca.")
+    print("3. Mostrar los libros en la biblioteca.")
+    print("o. Salir.")
+    print("Bienvenido a la biblioteca.")
+    opcion = input("Elige una opción.")
+    
     if opcion == "1":
-            agregar_libro(operador)
+        agregar_libro()
 
     elif opcion == "2":
-        prestar_libro(operador)
+        buscar_libro()
 
     elif opcion == "3":
-        print(operador)
+        print(estanteria)
 
     elif opcion == "0":
-        print("Saliendo.")
+        print("Nos vemos. Tenga usted un buen dia")
+        exit
 
     else:
-        print("Opinion no valido.")
+        print("Opción no valida. Prueba con las opciones que te damos.")
