@@ -39,11 +39,16 @@
 
 estanteria = ["pito","culo", "teta"]
 
-def agregar_libro():
-    n_libro = input("dime el nombre del libro: ")
-    estanteria.append(n_libro)
-    print(f"{n_libro} fue agregado en la biblioteca.")
-    print("Muchas gracias.")
+class Libro():
+    def __init__(self, titulo):
+        self._titulo = titulo 
+        
+
+    def agregar_libro(self):
+        titulo = input("dime el nombre del libro: ")
+        estanteria.append(titulo)
+        print(f"{titulo} fue agregado en la biblioteca.")
+        print("Muchas gracias.")
 
 def buscar_libro(b_libro):
     b_libro = input("el libro que buscamos es: ")
