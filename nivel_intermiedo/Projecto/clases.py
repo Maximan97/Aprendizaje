@@ -28,8 +28,11 @@ class Biblioteca():
             elif self.opcion == "2":
                 self.prestar_libro()
             elif self.opcion == "3":
-                for libro in self.librero:
-                    print(libro.titulo)
+                if len(self.librero) != 0:
+                    for libro in self.librero:
+                        print(libro.titulo)
+                else:
+                    print("es de chisito")
             elif self.opcion == "0":
                 print("Nos vemos.")
                 break
@@ -43,12 +46,13 @@ class Biblioteca():
         print(f"{titulo} ya fue agregado al librero.")
 
     def prestar_libro(self):
+        titulo = input("¿Qué libro querés llevarte?: ")
         for libro in self.librero:
             if libro.titulo == titulo:
                 self.librero.remove(libro)
                 print(f"Llevate '{titulo}', pero devolvelo, eh.")
                 return
-            print("Te lo afanaron, no está ese libro.")
+        print("Te lo afanaron, no está ese libro.")
 
 
 pito = Biblioteca()
