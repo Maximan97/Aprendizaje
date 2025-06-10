@@ -42,19 +42,13 @@ class Biblioteca():
         self.librero.append(libro)
         print(f"{titulo} ya fue agregado al librero.")
 
-    def buscar_libro(self):
-        if self.titulo in self.librero:
-            return True
-        else:
-            return False
-
     def prestar_libro(self):
-        self.titulo = input("Que titulo te queres llevar?: ")
-        if self.buscar_libro():
-            self.librero.remove(self.titulo)
-            print("Ya lo tienes en el inventario")
-        else:
-            print("Te lo ganaron wey")
+        for libro in self.librero:
+            if libro.titulo == titulo:
+                self.librero.remove(libro)
+                print(f"Llevate '{titulo}', pero devolvelo, eh.")
+                return
+            print("Te lo afanaron, no está ese libro.")
 
 
 pito = Biblioteca()
