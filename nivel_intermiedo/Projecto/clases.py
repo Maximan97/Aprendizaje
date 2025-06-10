@@ -1,10 +1,6 @@
 class Libro():
-    def __init__(self, titulo):
-        self._titulo = titulo
-
-    @property
-    def titulo(self):
-        return self._titulo
+    def __init__(self, titulo: str):
+        self.titulo = titulo
 
 
 class Mostrador():
@@ -23,7 +19,7 @@ class Mostrador():
 
 class Biblioteca():
     def __init__(self):
-        self.librero = []
+        self.librero: list[Libro] = []
         mostrador = Mostrador()
         while True:
             self.opcion = mostrador.menu()
