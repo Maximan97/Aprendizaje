@@ -47,6 +47,7 @@ class Biblioteca():
                 if len(self.librero) != 0:
                     for libro in self.librero:
                         print(libro.titulo)
+                    pausa()
                 else:
                     borrar_pantalla()
                     print("No hay libros agregados aun.")
