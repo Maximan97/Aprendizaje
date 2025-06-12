@@ -1,6 +1,27 @@
+import os
+
+
+def borrar_pantalla():
+    os.system("cls")  # Borra pantalla
+
+
+def pausa():
+    input("Presiona enter...")
+
+
+class Libro():
+    def __init__(self, titulo: str):
+        self._titulo = titulo
+
+    @property
+    def titulo(self):
+        return self._titulo
+
+
 class Mostrador():
-    def menu(self) -> str:
-        """Muestra menú y retorna la opción elegida x usuario"""
+    def menu(self):
+        borrar_pantalla()
+        print("")
         print("Bienvenido a la Biblioteca.")
         print("")
         print("1. Agregar libro a alal.")
@@ -8,53 +29,69 @@ class Mostrador():
         print("3. Mostrar todos los libros disponibles.")
         print("0. Salir")
         print("")
-        opcion = input("Que opción eliges?: ")
-        return opcion
-
-
-class Estante():
-    """Tiene libros"""
-
-    def __init__(self):
-        self.librero = ["pito"]
+        self.opcion = input("Que opción eliges?: ")
+        return self.opcion
 
 
 class Biblioteca():
     def __init__(self):
-        self.mostrador = Mostrador()
-        self.estante = Estante()
-        self.librero = self.estante.librero
-
-    def mostrar_menu(self):  # Muestra menú y pide opciones
+        self.librero: list[Libro] = []
+        mostrador = Mostrador()
         while True:
-            opcion = self.mostrador.menu()
-            if opcion == "1":
+            self.opcion = mostrador.menu()
+            if self.opcion == "1":
                 self.agregar_libro()
-            elif opcion == "2":
+            elif self.opcion == "2":
                 self.prestar_libro()
-            elif opcion == "3":
-                print(self.librero)
-            elif opcion == "0":
+            elif self.opcion == "3":
+                if len(self.librero) != 0:
+                    for libro in self.librero:
+                        print(libro.titulo)
+                else:
+                    borrar_pantalla()
+                    print("No hay libros agregados aun.")
+                    pausa()
+            elif self.opcion == "0":
                 print("Nos vemos.")
                 break
             else:
+                borrar_pantalla()
                 print("No es una opción valida.")
+                pausa()
 
     def agregar_libro(self):
-        titulo = input("Nombre del libro?: ")
-        self.librero.append(titulo)
+        titulo = input("Nombre del titulo?: ")
+        if titulo == "":
+            borrar_pantalla()
+            print("No tiene nombre el libro.")
+            pausa()
+            return
+        # if que se fije si está bacio si no, que de error (en else nene)
+        #   # Esto inmpide que siga nbajando
+        libro = Libro(titulo)
+        self.librero.append(libro)
+        borrar_pantalla()
         print(f"{titulo} ya fue agregado al librero.")
-
-    def buscar_libro(self, titulo):
-        if titulo in self.librero:
-            return True
-        else:
-            return False
+        pausa()
 
     def prestar_libro(self):
-        titulo = input("Que libro te querés llevar?: ")
-        if self.buscar_libro(titulo):
-            self.librero.remove(titulo)
-            print("Ya lo tienes en el inventario")
-        else:
-            print("Te lo ganaron wey")
+        borrar_pantalla()
+        titulo = input("¿Qué libro querés llevarte?: ")
+        if titulo == "":
+            borrar_pantalla()
+            print("No hay libros agregados a un?")
+            pausa()
+            return
+        for libro in self.librero:
+            if libro.titulo == titulo:
+                self.librero.remove(libro)
+                borrar_pantalla()
+                print(f"Llevate '{titulo}', pero devolvelo, eh.")
+                pausa()
+                return
+        borrar_pantalla()
+        print("Te lo afanaron, no está ese libro.")
+        pausa()
+
+
+pito = Biblioteca()
