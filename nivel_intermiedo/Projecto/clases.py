@@ -6,13 +6,6 @@ class Libro():
     def titulo(self):
         return self._titulo
 
-    @titulo.setter
-    def titulo(self, nombre_libro):
-        if nombre_libro != "":
-            self.titulo = nombre_libro
-        else:
-            print("mamahuevo digo, glu glu glu")
-
 
 class Mostrador():
     def menu(self):
@@ -52,6 +45,11 @@ class Biblioteca():
 
     def agregar_libro(self):
         titulo = input("Nombre del titulo?: ")
+        if titulo == "":
+            print(ValueError)
+            return
+        # if que se fije si está bacio si no, que de error (en else nene)
+        #   # Esto inmpide que siga nbajando
         libro = Libro(titulo)
         self.librero.append(libro)
         print(f"{titulo} ya fue agregado al librero.")
