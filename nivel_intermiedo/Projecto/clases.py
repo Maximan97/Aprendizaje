@@ -1,6 +1,17 @@
 class Libro():
     def __init__(self, titulo: str):
-        self.titulo = titulo
+        self._titulo = titulo
+
+    @property
+    def titulo(self):
+        return self._titulo
+
+    @titulo.setter
+    def titulo(self, nombre_libro):
+        if nombre_libro != "":
+            self.titulo = nombre_libro
+        else:
+            print("mamahuevo digo, glu glu glu")
 
 
 class Mostrador():
